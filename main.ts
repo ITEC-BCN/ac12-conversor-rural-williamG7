@@ -372,7 +372,7 @@ let npcDerecho : Sprite = null
 let npcIzquierdo : Sprite = null
 let miPersonaje : Sprite = null
 let estado_juego = ""
-let cercaDeNpc = null
+let cercaDeNpc = ""
 estado_juego = "bienvenida"
 //  Al iniciar el juego
 mostrar_bienvenida()

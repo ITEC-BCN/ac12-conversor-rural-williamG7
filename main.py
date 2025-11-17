@@ -371,7 +371,7 @@ npcDerecho: Sprite = None
 npcIzquierdo: Sprite = None
 miPersonaje: Sprite = None
 estado_juego = ""
-cercaDeNpc = None
+cercaDeNpc = ""
 estado_juego = "bienvenida"
 # Al iniciar el juego
 mostrar_bienvenida()
