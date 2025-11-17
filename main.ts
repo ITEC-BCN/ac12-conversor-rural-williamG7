@@ -1,16 +1,5 @@
-function menu_lena_a_productos () {
-    // Abre el menú para convertir leña a productos
-    game.splash("Menú", "Leña → Productos")
-}
-function mostrarMenu () {
-    scene.setBackgroundColor(9)
-    game.splash("producto -> leña, seleccione un producto")
-    textoOpciones = construirMenuOpciones()
-    game.showLongText(textoOpciones, DialogLayout.Center)
-    info.setLife(3)
-    game.showLongText("↑↓: Navegar | A: Seleccionar | B: Cancelar", DialogLayout.Bottom)
-}
-function iniciarMapa () {
+function iniciarMapa() {
+    
     scene.setBackgroundImage(img`
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -132,72 +121,100 @@ function iniciarMapa () {
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
-        `)
+    `)
     miPersonaje = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . f f f f . . . . . . 
-        . . . . f f f 2 2 f f f . . . . 
-        . . . f f f 2 2 2 2 f f f . . . 
-        . . f f f e e e e e e f f f . . 
-        . . f f e 2 2 2 2 2 2 e e f . . 
-        . f f e 2 f f f f f f 2 e f f . 
-        . f f f f f e e e e f f f f f . 
-        . . f e f b f 4 4 f b f e f . . 
-        . f f e 4 1 f d d f 1 4 e f . . 
-        f d f f e 4 d d d d 4 e f e . . 
-        f b f e f 2 2 2 2 e d d 4 e . . 
-        f b f 4 f 2 2 2 2 e d d e . . . 
-        f c f . f 4 4 5 5 f e e . . . . 
-        . f f . f f f f f f f . . . . . 
-        . . . . f f f . . . . . . . . . 
-        `, 0)
+            . . . . . . . . . . . . . . . .
+            . . . . . . f f f f . . . . . .
+            . . . . f f f 2 2 f f f . . . .
+            . . . f f f 2 2 2 2 f f f . . .
+            . . f f f e e e e e e f f f . .
+            . . f f e 2 2 2 2 2 2 e e f . .
+            . f f e 2 f f f f f f 2 e f f .
+            . f f f f f e e e e f f f f f .
+            . . f e f b f 4 4 f b f e f . .
+            . f f e 4 1 f d d f 1 4 e f . .
+            f d f f e 4 d d d d 4 e f e . .
+            f b f e f 2 2 2 2 e d d 4 e . .
+            f b f 4 f 2 2 2 2 e d d e . . .
+            f c f . f 4 4 5 5 f e e . . . .
+            . f f . f f f f f f f . . . . .
+            . . . . f f f . . . . . . . . .
+            `, 0)
     miPersonaje.setPosition(80, 60)
     controller.moveSprite(miPersonaje, 100, 100)
     npcIzquierdo = sprites.create(img`
-        . . . . . f f 4 4 f f . . . . . 
-        . . . . f 5 4 5 5 4 5 f . . . . 
-        . . . f e 4 5 5 5 5 4 e f . . . 
-        . . f b 3 e 4 4 4 4 e 3 b f . . 
-        . . f 3 3 3 3 3 3 3 3 3 3 f . . 
-        . f 3 3 e b 3 e e 3 b e 3 3 f . 
-        . f 3 3 f f e e e e f f 3 3 f . 
-        . f b b f b f e e f b f b b f . 
-        . f b b e 1 f 4 4 f 1 e b b f . 
-        f f b b f 4 4 4 4 4 4 f b b f f 
-        f b b f f f e e e e f f f b b f 
-        . f e e f b d d d d b f e e f . 
-        . . e 4 c d d d d d d c 4 e . . 
-        . . e f b d b d b d b b f e . . 
-        . . . f f 1 d 1 d 1 d f f . . . 
-        . . . . . f f b b f f . . . . . 
-        `, 0)
+            . . . . . f f 4 4 f f . . . . .
+            . . . . f 5 4 5 5 4 5 f . . . .
+            . . . f e 4 5 5 5 5 4 e f . . .
+            . . f b 3 e 4 4 4 4 e 3 b f . .
+            . . f 3 3 3 3 3 3 3 3 3 3 f . .
+            . f 3 3 e b 3 e e 3 b e 3 3 f .
+            . f 3 3 f f e e e e f f 3 3 f .
+            . f b b f b f e e f b f b b f .
+            . f b b e 1 f 4 4 f 1 e b b f .
+            f f b b f 4 4 4 4 4 4 f b b f f
+            f b b f f f e e e e f f f b b f
+            . f e e f b d d d d b f e e f .
+            . . e 4 c d d d d d d c 4 e . .
+            . . e f b d b d b d b b f e . .
+            . . . f f 1 d 1 d 1 d f f . . .
+            . . . . . f f b b f f . . . . .
+            `, 0)
     npcIzquierdo.setPosition(15, 90)
     npcIzquierdo.say("Productos -> Leña", 2000)
     npcDerecho = sprites.create(img`
-        . . . . . . 5 . 5 . . . . . . . 
-        . . . . . f 5 5 5 f f . . . . . 
-        . . . . f 1 5 2 5 1 6 f . . . . 
-        . . . f 1 6 6 6 6 6 1 6 f . . . 
-        . . . f 6 6 f f f f 6 1 f . . . 
-        . . . f 6 f f d d f f 6 f . . . 
-        . . f 6 f d f d d f d f 6 f . . 
-        . . f 6 f d 3 d d 3 d f 6 f . . 
-        . . f 6 6 f d d d d f 6 6 f . . 
-        . f 6 6 f 3 f f f f 3 f 6 6 f . 
-        . . f f d 3 5 3 3 5 3 d f f . . 
-        . . f d d f 3 5 5 3 f d d f . . 
-        . . . f f 3 3 3 3 3 3 f f . . . 
-        . . . f 3 3 5 3 3 5 3 3 f . . . 
-        . . . f f f f f f f f f f . . . 
-        . . . . . f f . . f f . . . . . 
-        `, 0)
+        . . . . . . 5 . 5 . . . . . . .
+        . . . . . f 5 5 5 f f . . . . .
+        . . . . f 1 5 2 5 1 6 f . . . .
+        . . . f 1 6 6 6 6 6 1 6 f . . .
+        . . . f 6 6 f f f f 6 1 f . . .
+        . . . f 6 f f d d f f 6 f . . .
+        . . f 6 f d f d d f d f 6 f . .
+        . . f 6 f d 3 d d 3 d f 6 f . .
+        . . f 6 6 f d d d d f 6 6 f . .
+        . f 6 6 f 3 f f f f 3 f 6 6 f .
+        . . f f d 3 5 3 3 5 3 d f f . .
+        . . f d d f 3 5 5 3 f d d f . .
+        . . . f f 3 3 3 3 3 3 f f . . .
+        . . . f 3 3 5 3 3 5 3 3 f . . .
+        . . . f f f f f f f f f f . . .
+        . . . . . f f . . f f . . . . .
+    `, 0)
     npcDerecho.setPosition(145, 90)
     npcDerecho.say("Leña -> Productos", 2000)
     game.showLongText("Acercate a un vecino y presiona A para intercambiar", DialogLayout.Bottom)
     estado_juego = "mapa"
+    miPersonaje.setBounceOnWall(true)
 }
-// Detectar cuando presiona el botón A
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+
+//  Para saber si estamos cerca de algun NPC
+game.onUpdateInterval(500, function verificarProximidad() {
+    let distancia_izq_x: number;
+    let distancia_izq_y: number;
+    let distancia_der_x: number;
+    let distancia_der_y: number;
+    
+    if (estado_juego == "mapa") {
+        distancia_izq_x = Math.abs(miPersonaje.x - npcIzquierdo.x)
+        distancia_izq_y = Math.abs(miPersonaje.y - npcIzquierdo.y)
+        distancia_der_x = Math.abs(miPersonaje.x - npcDerecho.x)
+        distancia_der_y = Math.abs(miPersonaje.y - npcDerecho.y)
+        if (distancia_izq_x < 25 && distancia_izq_y < 25) {
+            cercaDeNpc = "izquierdo"
+            npcIzquierdo.say("presione A", 500)
+        } else if (distancia_der_x < 25 && distancia_der_y < 25) {
+            cercaDeNpc = "derecho"
+            npcDerecho.say("presione A", 500)
+        } else {
+            cercaDeNpc = null
+        }
+        
+    }
+    
+})
+//  Detectar cuando presiona el botón A
+controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
+    
     if (estado_juego == "bienvenida") {
         estado_juego = "mapa"
         iniciarMapa()
@@ -207,19 +224,77 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         } else if (cercaDeNpc == "Derecho") {
             menu_lena_a_productos()
         }
+        
     }
+    
 })
-function menu_productos_a_lena () {
-    // Abre el menú para convertir productos a leña
+function menu_productos_a_lena() {
+    /** Abre el menú para convertir productos a leña */
+    
     game.splash("Menú", "Productos → Leña")
     estado_juego = "menu_productos_a_lena"
     estadoMenu = "seleccion"
     productoSeleccionado = 0
-    cantidad_producto = 1
+    let cantidad_producto = 1
     mostrarMenu()
 }
-// Función para mostrar la pantalla de bienvenida
-function mostrar_bienvenida () {
+
+function mostrarMenu() {
+    scene.setBackgroundColor(9)
+    game.splash("producto -> leña, seleccione un producto")
+    let textoOpciones = construirMenuOpciones()
+    game.showLongText(textoOpciones, DialogLayout.Center)
+    info.setLife(3)
+    game.showLongText("↑↓: Navegar | A: Seleccionar | B: Cancelar", DialogLayout.Bottom)
+}
+
+function construirMenuOpciones(): string {
+    let producto: any;
+    let texto = ""
+    for (let i = 0; i < PRODUCTOS.length; i++) {
+        producto = PRODUCTOS[i]
+        if (i == productoSeleccionado) {
+            texto += "> "
+        } else {
+            texto += ""
+        }
+        
+        texto += " = " + ("" + producto["kg_lena"]) + " kg leña"
+        if (i < PRODUCTOS.length - 1) {
+            texto += "\n"
+        }
+        
+    }
+    return texto
+}
+
+function ingresar_cantida_producto() {
+    
+    estadoMenu = "cantidad"
+    cantidadProducto = 1
+    let producto = PRODUCTOS[productoSeleccionado]
+    game.splash("cantidad", "¿cuantos" + producto["Nombre"] + "?")
+    while (estadoMenu == "cantidad") {
+        mostrar_cantidad_actual()
+        pause(100)
+    }
+}
+
+function mostrar_cantidad_actual() {
+    let producto = PRODUCTOS[productoSeleccionado]
+    let texto = producto["Nombre"]
+    texto += "Cantidad: " + ("" + cantidadProducto) + "\n\n"
+    texto += "←→: Ajustar | A: Confirmar | B: Volver"
+    game.showLongText(texto, DialogLayout.Center)
+}
+
+function menu_lena_a_productos() {
+    /** Abre el menú para convertir leña a productos */
+    game.splash("Menú", "Leña → Productos")
+}
+
+//  Función para mostrar la pantalla de bienvenida
+function mostrar_bienvenida() {
     scene.setBackgroundImage(img`
         1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
         1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -343,85 +418,42 @@ function mostrar_bienvenida () {
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
         `)
     game.splash("Bienvenido al", "Conversor Rural")
-    // Mostrar instrucciones
+    //  Mostrar instrucciones
     game.showLongText("Presiona A para continuar", DialogLayout.Bottom)
 }
-function construirMenuOpciones () {
-    let producto: any;
-for (let i = 0; i <= PRODUCTOS.length - 1; i++) {
-        producto = PRODUCTOS[i]
-        if (i == productoSeleccionado) {
-            texto = "" + texto + "> "
-        } else {
-            texto = "" + texto + ""
-        }
-        texto = "" + texto + " = " + ("" + producto[0]) + " kg leña"
-        if (i < PRODUCTOS.length - 1) {
-            texto = "" + texto + "\n"
-        }
-    }
-    return texto
-}
-let texto = ""
-let cantidad_producto = 0
-let productoSeleccionado = 0
-let npcDerecho: Sprite = null
-let npcIzquierdo: Sprite = null
-let miPersonaje: Sprite = null
-let textoOpciones = ""
-let estado_juego = ""
-let estadoMenu = ""
-let PRODUCTOS: Array[] = []
-let cercaDeNpc = ""
-// lista con los productos
-PRODUCTOS = [
-{
+
+//  lista con los productos
+let PRODUCTOS = [ {
     "Nombre" : "Gallina",
     "kg_leña" : 6,
-},
-{
+}
+, {
     "Nombre" : "Patata",
     "kg_leña" : 2,
     "kg_producto" : 1.5,
-},
-{
+}
+, {
     "Nombre" : "Cabra",
     "kg_leña" : 5,
-},
-{
+}
+, {
     "Nombre" : "Huevo",
     "kg_leña" : 3,
     "cantidad_producto" : 12,
-},
-{
+}
+, {
     "Nombre" : "Caballo",
     "kg_leña" : 12,
 }
 ]
+let productoSeleccionado = 0
 let cantidadProducto = 1
-estadoMenu = "seleccion"
+let estadoMenu = "seleccion"
+let npcDerecho : Sprite = null
+let npcIzquierdo : Sprite = null
+let miPersonaje : Sprite = null
+let estado_juego = ""
+let cercaDeNpc = ""
 estado_juego = "bienvenida"
-// Al iniciar el juego
+//  Al iniciar el juego
 mostrar_bienvenida()
-// Para saber si estamos cerca de algun NPC
-game.onUpdateInterval(500, function () {
-    let distancia_izq_x: number;
-let distancia_izq_y: number;
-let distancia_der_x: number;
-let distancia_der_y: number;
-if (estado_juego == "mapa") {
-        distancia_izq_x = Math.abs(miPersonaje.x - npcIzquierdo.x)
-        distancia_izq_y = Math.abs(miPersonaje.y - npcIzquierdo.y)
-        distancia_der_x = Math.abs(miPersonaje.x - npcDerecho.x)
-        distancia_der_y = Math.abs(miPersonaje.y - npcDerecho.y)
-        if (distancia_izq_x < 25 && distancia_izq_y < 25) {
-            cercaDeNpc = "izquierdo"
-            npcIzquierdo.say("presione A", 500)
-        } else if (distancia_der_x < 25 && distancia_der_y < 25) {
-            cercaDeNpc = "derecho"
-            npcDerecho.say("presione A", 500)
-        } else {
-            cercaDeNpc = null
-        }
-    }
-})

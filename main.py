@@ -165,29 +165,30 @@ def iniciarMapa():
     npcIzquierdo.set_position(15, 90)
     npcIzquierdo.say("Productos -> Leña", 2000)
     npcDerecho = sprites.create(img("""
-            . . . . . . 5 . 5 . . . . . . .
-            . . . . . f 5 5 5 f f . . . . .
-            . . . . f 1 5 2 5 1 6 f . . . .
-            . . . f 1 6 6 6 6 6 1 6 f . . .
-            . . . f 6 6 f f f f 6 1 f . . .
-            . . . f 6 f f d d f f 6 f . . .
-            . . f 6 f d f d d f d f 6 f . .
-            . . f 6 f d 3 d d 3 d f 6 f . .
-            . . f 6 6 f d d d d f 6 6 f . .
-            . f 6 6 f 3 f f f f 3 f 6 6 f .
-            . . f f d 3 5 3 3 5 3 d f f . .
-            . . f d d f 3 5 5 3 f d d f . .
-            . . . f f 3 3 3 3 3 3 f f . . .
-            . . . f 3 3 5 3 3 5 3 3 f . . .
-            . . . f f f f f f f f f f . . .
-            . . . . . f f . . f f . . . . .
-            """),
+        . . . . . . 5 . 5 . . . . . . .
+        . . . . . f 5 5 5 f f . . . . .
+        . . . . f 1 5 2 5 1 6 f . . . .
+        . . . f 1 6 6 6 6 6 1 6 f . . .
+        . . . f 6 6 f f f f 6 1 f . . .
+        . . . f 6 f f d d f f 6 f . . .
+        . . f 6 f d f d d f d f 6 f . .
+        . . f 6 f d 3 d d 3 d f 6 f . .
+        . . f 6 6 f d d d d f 6 6 f . .
+        . f 6 6 f 3 f f f f 3 f 6 6 f .
+        . . f f d 3 5 3 3 5 3 d f f . .
+        . . f d d f 3 5 5 3 f d d f . .
+        . . . f f 3 3 3 3 3 3 f f . . .
+        . . . f 3 3 5 3 3 5 3 3 f . . .
+        . . . f f f f f f f f f f . . .
+        . . . . . f f . . f f . . . . .
+    """),
         0)
     npcDerecho.set_position(145, 90)
     npcDerecho.say("Leña -> Productos", 2000)
     game.show_long_text("Acercate a un vecino y presiona A para intercambiar",
         DialogLayout.BOTTOM)
     estado_juego = "mapa"
+    miPersonaje.set_bounce_on_wall(True)
 
 # Para saber si estamos cerca de algun NPC
 def verificarProximidad():
@@ -206,12 +207,12 @@ def verificarProximidad():
             
         elif distancia_der_x < 25 and distancia_der_y <25:
             cercaDeNpc = "derecho"
-            npcDerecho.say("presione A", 500)   
+            npcDerecho.say("presione A", 500)
 
         else:
-            cercaDeNpc = None  
+            cercaDeNpc = None
 
-game.on_update_interval(500, verificarProximidad)      
+game.on_update_interval(500, verificarProximidad)
 
 # Detectar cuando presiona el botón A
 def on_a_pressed():
@@ -272,12 +273,27 @@ def construirMenuOpciones():
             
     return texto
 
+def ingresar_cantida_producto():
+    global estadoMenu, cantidadProducto
 
+    estadoMenu = "cantidad"
+    cantidadProducto = 1
 
-        
+    producto = PRODUCTOS[productoSeleccionado]
 
+    game.splash("cantidad", "¿cuantos" + producto["Nombre"] + "?")
 
+    while estadoMenu == "cantidad":
+        mostrar_cantidad_actual()
+        pause(100)
 
+def mostrar_cantidad_actual():
+    producto = PRODUCTOS[productoSeleccionado]
+    texto = producto["Nombre"]
+    texto += "Cantidad: " + str(cantidadProducto) + "\n\n"
+    texto += "←→: Ajustar | A: Confirmar | B: Volver"
+    
+    game.show_long_text(texto, DialogLayout.CENTER)
 
 def menu_lena_a_productos():
     """Abre el menú para convertir leña a productos"""
