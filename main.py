@@ -1,6 +1,6 @@
-function iniciarMapa() {
-    
-    scene.setBackgroundImage(img`
+def iniciarMapa():
+    global miPersonaje, npcIzquierdo, npcDerecho, estado_juego
+    scene.set_background_image(img("""
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -121,8 +121,8 @@ function iniciarMapa() {
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
-        `)
-    miPersonaje = sprites.create(img`
+        """))
+    miPersonaje = sprites.create(img("""
             . . . . . . . . . . . . . . . .
             . . . . . . f f f f . . . . . .
             . . . . f f f 2 2 f f f . . . .
@@ -139,10 +139,11 @@ function iniciarMapa() {
             f c f . f 4 4 5 5 f e e . . . .
             . f f . f f f f f f f . . . . .
             . . . . f f f . . . . . . . . .
-            `, 0)
-    miPersonaje.setPosition(80, 60)
-    controller.moveSprite(miPersonaje, 100, 100)
-    npcIzquierdo = sprites.create(img`
+            """),
+        0)
+    miPersonaje.set_position(80, 60)
+    controller.move_sprite(miPersonaje, 100, 100)
+    npcIzquierdo = sprites.create(img("""
             . . . . . f f 4 4 f f . . . . .
             . . . . f 5 4 5 5 4 5 f . . . .
             . . . f e 4 5 5 5 5 4 e f . . .
@@ -159,10 +160,11 @@ function iniciarMapa() {
             . . e f b d b d b d b b f e . .
             . . . f f 1 d 1 d 1 d f f . . .
             . . . . . f f b b f f . . . . .
-            `, 0)
-    npcIzquierdo.setPosition(15, 90)
+            """),
+        0)
+    npcIzquierdo.set_position(15, 90)
     npcIzquierdo.say("Productos -> Leña", 2000)
-    npcDerecho = sprites.create(img`
+    npcDerecho = sprites.create(img("""
             . . . . . . 5 . 5 . . . . . . .
             . . . . . f 5 5 5 f f . . . . .
             . . . . f 1 5 2 5 1 6 f . . . .
@@ -179,69 +181,68 @@ function iniciarMapa() {
             . . . f 3 3 5 3 3 5 3 3 f . . .
             . . . f f f f f f f f f f . . .
             . . . . . f f . . f f . . . . .
-            `, 0)
-    npcDerecho.setPosition(145, 90)
+            """),
+        0)
+    npcDerecho.set_position(145, 90)
     npcDerecho.say("Leña -> Productos", 2000)
-    game.showLongText("Acercate a un vecino y presiona A para intercambiar", DialogLayout.Bottom)
+    game.show_long_text("Acercate a un vecino y presiona A para intercambiar",
+        DialogLayout.BOTTOM)
     estado_juego = "mapa"
-}
 
-//  Para saber si estamos cerca de algun NPC
-game.onUpdateInterval(500, function verificarProximidad() {
-    let distancia_izq_x: number;
-    let distancia_izq_y: number;
-    let distancia_der_x: number;
-    let distancia_der_y: number;
-    
-    if (estado_juego == "mapa") {
-        distancia_izq_x = Math.abs(miPersonaje.x - npcIzquierdo.x)
-        distancia_izq_y = Math.abs(miPersonaje.y - npcIzquierdo.y)
-        distancia_der_x = Math.abs(miPersonaje.x - npcDerecho.x)
-        distancia_der_y = Math.abs(miPersonaje.y - npcDerecho.y)
-        if (distancia_izq_x < 25 && distancia_izq_y < 25) {
+# Para saber si estamos cerca de algun NPC
+def verificarProximidad():
+    global cercaDeNpc
+
+    if estado_juego == "mapa":
+        distancia_izq_x = abs(miPersonaje.x - npcIzquierdo.x)
+        distancia_izq_y = abs(miPersonaje.y - npcIzquierdo.y)
+        
+        distancia_der_x = abs(miPersonaje.x - npcDerecho.x)
+        distancia_der_y = abs(miPersonaje.y - npcDerecho.y)
+
+        if distancia_izq_x < 25 and distancia_izq_y <25:
             cercaDeNpc = "izquierdo"
             npcIzquierdo.say("presione A", 500)
-        } else if (distancia_der_x < 25 && distancia_der_y < 25) {
+            
+        elif distancia_der_x < 25 and distancia_der_y <25:
             cercaDeNpc = "derecho"
-            npcDerecho.say("presione A", 500)
-        } else {
-            cercaDeNpc = null
-        }
-        
-    }
-    
-})
-//  Detectar cuando presiona el botón A
-controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
-    
-    if (estado_juego == "bienvenida") {
+            npcDerecho.say("presione A", 500)   
+
+        else:
+            cercaDeNpc = None  
+
+game.on_update_interval(500, verificarProximidad)      
+
+# Detectar cuando presiona el botón A
+def on_a_pressed():
+    global estado_juego
+
+    if estado_juego == "bienvenida":
         estado_juego = "mapa"
         iniciarMapa()
-    } else if (estado_juego == "mapa") {
-        if (cercaDeNpc == "izquierdo") {
-            menu_productos_a_lena()
-        } else if (cercaDeNpc == "Derecho") {
-            menu_lena_a_productos()
-        }
-        
-    }
     
-})
-function menu_productos_a_lena() {
-    /** Abre el menú para convertir productos a leña */
+    elif estado_juego == "mapa":
+        if cercaDeNpc == "izquierdo":
+            menu_productos_a_lena()
+
+        elif cercaDeNpc == "Derecho":
+            menu_lena_a_productos()
+
+controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
+
+def menu_productos_a_lena():
+    """Abre el menú para convertir productos a leña"""
     game.splash("Menú", "Productos → Leña")
-}
+    # Aquí irá el menú completo después
 
-//  Aquí irá el menú completo después
-function menu_lena_a_productos() {
-    /** Abre el menú para convertir leña a productos */
+def menu_lena_a_productos():
+    """Abre el menú para convertir leña a productos"""
     game.splash("Menú", "Leña → Productos")
-}
+    # Aquí irá el menú completo después
 
-//  Aquí irá el menú completo después
-//  Función para mostrar la pantalla de bienvenida
-function mostrar_bienvenida() {
-    scene.setBackgroundImage(img`
+# Función para mostrar la pantalla de bienvenida
+def mostrar_bienvenida():
+    scene.set_background_image(img("""
         1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
         1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
         1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -362,17 +363,15 @@ function mostrar_bienvenida() {
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-        `)
+        """))
     game.splash("Bienvenido al", "Conversor Rural")
-    //  Mostrar instrucciones
-    game.showLongText("Presiona A para continuar", DialogLayout.Bottom)
-}
-
-let npcDerecho : Sprite = null
-let npcIzquierdo : Sprite = null
-let miPersonaje : Sprite = null
-let estado_juego = ""
-let cercaDeNpc = null
+    # Mostrar instrucciones
+    game.show_long_text("Presiona A para continuar", DialogLayout.BOTTOM)
+npcDerecho: Sprite = None
+npcIzquierdo: Sprite = None
+miPersonaje: Sprite = None
+estado_juego = ""
+cercaDeNpc = None
 estado_juego = "bienvenida"
-//  Al iniciar el juego
+# Al iniciar el juego
 mostrar_bienvenida()
