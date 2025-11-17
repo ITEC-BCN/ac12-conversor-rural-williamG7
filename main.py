@@ -121,7 +121,7 @@ def iniciarMapa():
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
-        """))
+    """))
     miPersonaje = sprites.create(img("""
             . . . . . . . . . . . . . . . .
             . . . . . . f f f f . . . . . .
@@ -232,13 +232,57 @@ controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
 
 def menu_productos_a_lena():
     """Abre el menú para convertir productos a leña"""
+    global estado_juego, estadoMenu, cantidadProducto, productoSeleccionado
     game.splash("Menú", "Productos → Leña")
-    # Aquí irá el menú completo después
+    
+    estado_juego = "menu_productos_a_lena"
+    estadoMenu = "seleccion"
+    productoSeleccionado = 0
+    cantidad_producto = 1
+
+    mostrarMenu()
+
+
+def mostrarMenu():
+    scene.set_background_color(9)
+
+    game.splash("producto -> leña, seleccione un producto")
+    
+    textoOpciones = construirMenuOpciones()
+    game.show_long_text(textoOpciones, DialogLayout.Center)
+
+    info.set_life(3)
+    game.show_long_text("↑↓: Navegar | A: Seleccionar | B: Cancelar", DialogLayout.BOTTOM)
+
+
+def construirMenuOpciones():
+    texto = ""
+    for i in range(len(PRODUCTOS)):
+        producto = PRODUCTOS[i]
+
+        if i == productoSeleccionado:
+            texto += "> "
+        else:
+            texto += ""
+            
+        texto += " = " + str(producto["kg_lena"]) + " kg leña"
+                
+        if i < len(PRODUCTOS) - 1:
+            texto += "\n"
+            
+    return texto
+
+
+
+        
+
+
+
 
 def menu_lena_a_productos():
     """Abre el menú para convertir leña a productos"""
     game.splash("Menú", "Leña → Productos")
-    # Aquí irá el menú completo después
+
 
 # Función para mostrar la pantalla de bienvenida
 def mostrar_bienvenida():
@@ -367,6 +411,19 @@ def mostrar_bienvenida():
     game.splash("Bienvenido al", "Conversor Rural")
     # Mostrar instrucciones
     game.show_long_text("Presiona A para continuar", DialogLayout.BOTTOM)
+
+# lista con los productos
+PRODUCTOS = [
+    {"Nombre": "Gallina", "kg_leña": 6},
+    {"Nombre": "Patata", "kg_leña": 2, "kg_producto": 1.5},
+    {"Nombre": "Cabra", "kg_leña": 5},
+    {"Nombre": "Huevo", "kg_leña": 3, "cantidad_producto": 12},
+    {"Nombre": "Caballo", "kg_leña": 12}
+]
+
+productoSeleccionado = 0
+cantidadProducto = 1
+estadoMenu = "seleccion"
 npcDerecho: Sprite = None
 npcIzquierdo: Sprite = None
 miPersonaje: Sprite = None
