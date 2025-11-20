@@ -1,5 +1,5 @@
 {
-    "name": "Demo",
+    "name": "ac12-conversor-rural-williamG7",
     "description": "",
     "dependencies": {
         "device": "*",
@@ -26,5 +26,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "pyprj"
 }
