@@ -39,11 +39,11 @@ Este proyecto es parte de la actividad AC12 del curso DAM2 (Desarrollo de Aplica
 4. Busca: `https://github.com/ITEC-BCN/ac12-conversor-rural-williamG7`
 5. Importa la extensión
 
-## 📸 Vista Previa de Bloques
+## 📸 Vista Previa del Prorgama
 
-La siguiente imagen muestra el código en bloques del último commit:
+La siguiente imagen muestra la pantalla de inicio del programa:
 
-![Vista de los bloques](https://github.com/ITEC-BCN/ac12-conversor-rural-williamG7/raw/main/.github/makecode/blocks.png)
+![Vista de los bloques](arcade-ac12-conversor-rural-williamG7.png)
 
 ## Autor
 
