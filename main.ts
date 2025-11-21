@@ -1,6 +1,3 @@
-//  ==================
-//  VARIABLES GLOBALES
-//  ==================
 let mi_personaje : Sprite = null
 let npc_izquierdo : Sprite = null
 let npc_derecho : Sprite = null
@@ -26,7 +23,7 @@ function obtener_nombre_producto(indice: number): string {
     return ""
 }
 
-function obtener_emoji_producto(indice: number): string {
+function obtener_emoji_producto(indice: any): string {
     if (indice == 0) {
         return "🐓"
     } else if (indice == 1) {
@@ -42,8 +39,146 @@ function obtener_emoji_producto(indice: number): string {
     return ""
 }
 
+function obtener_imagen_producto(indice: number): Image {
+    if (indice == 0) {
+        return img`
+            . . . . . . . . . b 5 b . . . .
+            . . . . . . . . . b 5 b . . . .
+            . . . . . . b b b b b b . . . .
+            . . . . . b b 5 5 5 5 5 b . . .
+            . . . . b b 5 b c 5 5 d 4 c . .
+            . b b b b 5 5 5 b f d d 4 4 4 b
+            . b d 5 b 5 5 b c b 4 4 4 4 b .
+            . . b 5 5 b 5 5 5 4 4 4 4 b . .
+            . . b d 5 5 b 5 5 5 5 5 5 b . .
+            . b d b 5 5 5 d 5 5 5 5 5 5 b .
+            b d d c d 5 5 b 5 5 5 5 5 5 b .
+            c d d d c c b 5 5 5 5 5 5 5 b .
+            c b d d d d d 5 5 5 5 5 5 5 b .
+            . c d d d d d d 5 5 5 5 5 d b .
+            . . c b d d d d d 5 5 5 b b . .
+            . . . c c c c c c c c b b . . .
+        `
+    } else if (indice == 1) {
+        return img`
+            . . . . . . . . . . . . . . . .
+            . . . . . . . e c 7 . . . . . .
+            . . . . e e e c 7 7 e e . . . .
+            . . c e e e e c 7 e 2 2 e e . .
+            . c e e e e e c 6 e e 2 2 2 e .
+            . c e e e 2 e c c 2 4 5 4 2 e .
+            c e e e 2 2 2 2 2 2 4 5 5 2 2 e
+            c e e e 2 2 2 2 2 2 2 4 4 2 2 e
+            c e e e 2 2 2 2 2 2 2 2 2 2 2 e
+            c e e e 2 d 2 2 2 2 2 2 2 2 2 e
+            c e e e e 2 2 2 2 2 2 2 2 2 2 e
+            c e 2 e e 2 2 2 2 2 2 2 2 2 2 e
+            . e e e e 2 2 2 2 2 2 2 2 2 e .
+            . e e e 2 e 2 2 2 2 2 2 2 e e .
+            . . e e e e e e e e e e e e . .
+            . . . e e e e e e e e e e . . .
+        `
+    } else if (indice == 2) {
+        return img`
+            . . . . . . . . . . . . . . . .
+            . . . . . f f f f f f . . . . .
+            . . . . f e e e e e e f . . . .
+            . . . f e e e e e e e e f . . .
+            . . . f e e e f f e e e f . . .
+            . . . f e e f e e f e e f . . .
+            . . . f e e e e e e e e f . . .
+            . . . . f e e e e e e f . . . .
+            . . . . . f f f f f f . . . . .
+            . . . . f f . . . . f f . . . .
+            . . . . f . . . . . . f . . . .
+            . . . . f . . . . . . f . . . .
+            . . . f f . . . . . . f f . . .
+            . . . f . . . . . . . . f . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+        `
+    } else if (indice == 3) {
+        return img`
+            . . . . . . . . . . . . . . . .
+            . . . . . . . b b b b . . . . .
+            . . . . . . b b 1 1 b b . . . .
+            . . . . . b b 1 1 1 1 b b . . .
+            . . . . . b 1 1 1 1 1 1 b . . .
+            . . . . b b 1 1 1 1 1 1 b b . .
+            . . . . b 1 1 1 1 1 1 1 1 b . .
+            . . . . b 1 1 1 1 1 1 1 1 b . .
+            . . . . b 1 1 1 1 1 1 1 1 b . .
+            . . . . b 1 1 1 1 1 1 1 1 b . .
+            . . . . b b 1 1 1 1 1 1 b b . .
+            . . . . . b 1 1 1 1 1 1 b . . .
+            . . . . . b b 1 1 1 1 b b . . .
+            . . . . . . b b 1 1 b b . . . .
+            . . . . . . . b b b b . . . . .
+            . . . . . . . . . . . . . . . .
+        `
+    } else if (indice == 4) {
+        return img`
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . c c . . . . . .
+            . . . . . . c c c c c . . . . .
+            . . . . . c c e e c c c . . . .
+            . . . . c c e e e e c c c . . .
+            . . . . c e e e e e e e c . . .
+            . . . . c e e e e e e e c . . .
+            . . . c c c c c c c e e c c . .
+            . . . c e e e e e c c e e c . .
+            . . c c e e e e e e c c c c c .
+            . . c e e e e e e e e e e e c .
+            . . c e e e e e e e e e e e c .
+            . c c c c c c c c c c c c c c c
+            . c e e c . . . . . . c e e c .
+            . c c c c . . . . . . c c c c .
+            . . . . . . . . . . . . . . . .
+        `
+    }
+    
+    return img`
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+}
+
+function obtener_imagen_lena(): Image {
+    return img`
+        . . . . . . . . . . . . . . . .
+        . . . . . e e e e e . . . . . .
+        . . . . e e e e e e e . . . . .
+        . . . e e e e e e e e e . . . .
+        . . . e e e e e e e e e . . . .
+        . . . e e e f f e e e e . . . .
+        . . . e e e f f e e e e . . . .
+        . . . e e e e e e e e e . . . .
+        . . . e e e e e e e e e . . . .
+        . . . . e e e e e e e . . . . .
+        . . . . . e e e e e . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    `
+}
+
 function calcular_productos_a_lena(producto: number, cantidad: number): number {
-    /** Calcula cuántos kg de leña se necesitan para X productos. */
     if (producto == 0) {
         return cantidad * 6
     } else if (producto == 1) {
@@ -60,21 +195,15 @@ function calcular_productos_a_lena(producto: number, cantidad: number): number {
 }
 
 function calcular_lena_a_productos(producto: number, kg_lena: number): number {
-    /** Calcula cuántos productos se obtienen con X kg de leña. */
     if (producto == 0) {
-        //  Gallina
         return kg_lena / 6
     } else if (producto == 1) {
-        //  Patata
         return kg_lena * 1.5 / 2
     } else if (producto == 2) {
-        //  Cabra
         return kg_lena / 5
     } else if (producto == 3) {
-        //  Huevos
         return kg_lena * 12 / 3
     } else if (producto == 4) {
-        //  Caballo
         return kg_lena / 12
     }
     
@@ -82,19 +211,15 @@ function calcular_lena_a_productos(producto: number, kg_lena: number): number {
 }
 
 function redondear_resultado(valor: number): number {
-    /** Redondea un valor a 2 decimales. */
     return Math.round(valor * 100) / 100
 }
 
 function validar_cantidad(producto: number, cantidad: number, es_producto: boolean): boolean {
-    /** Valida que la cantidad sea correcta. */
-    //  No negativos ni cero
     if (cantidad <= 0) {
         game.splash("ERROR", "La cantidad debe ser mayor que 0")
         return false
     }
     
-    //  Para animales (Gallina, Cabra, Caballo) solo enteros
     if (es_producto && (producto == 0 || producto == 2 || producto == 4)) {
         if (cantidad != Math.floor(cantidad)) {
             game.splash("ERROR", "Solo números enteros de animales")
@@ -106,9 +231,15 @@ function validar_cantidad(producto: number, cantidad: number, es_producto: boole
     return true
 }
 
+function desactivar_movimiento() {
+    controller.moveSprite(mi_personaje, 0, 0)
+}
+
+function activar_movimiento() {
+    controller.moveSprite(mi_personaje, 100, 100)
+}
+
 function mostrar_bienvenida() {
-    /** Muestra la pantalla de bienvenida del juego. */
-    //  Tu fondo original de bienvenida
     scene.setBackgroundImage(img`
         1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
         1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -222,24 +353,13 @@ function mostrar_bienvenida() {
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-        6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-        6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-        6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-        6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
         `)
     game.splash("Bienvenido al", "Conversor Rural")
-    let historia = `En Alcubilla de Avellaneda
-intercambiamos productos
-por leña de pino.
-
-Tu abuelo ganó 1 hectárea
-en el sorteo!`
-    game.showLongText(historia, DialogLayout.Center)
-    game.showLongText("Presiona A para continuar", DialogLayout.Bottom)
+    game.splash("CONVERSOR DE UNIDADES", "Cambia leña por productos o viceversa")
+    iniciar_mapa()
 }
 
 function iniciar_mapa() {
-    /** Inicializa el mapa con los personajes y NPCs. */
     
     scene.setBackgroundImage(img`
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -362,7 +482,6 @@ function iniciar_mapa() {
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     `)
-    //  Crear personaje principal
     mi_personaje = sprites.create(img`
         . . . . . . . . . . . . . . . .
         . . . . . . f f f f . . . . . .
@@ -384,7 +503,6 @@ function iniciar_mapa() {
     mi_personaje.setPosition(80, 60)
     controller.moveSprite(mi_personaje, 100, 100)
     mi_personaje.setStayInScreen(true)
-    //  Crear NPC izquierdo (Productos -> Leña)
     npc_izquierdo = sprites.create(img`
         . . . . . f f 4 4 f f . . . . .
         . . . . f 5 4 5 5 4 5 f . . . .
@@ -404,7 +522,6 @@ function iniciar_mapa() {
         . . . . . f f b b f f . . . . .
     `, SpriteKind.Enemy)
     npc_izquierdo.setPosition(20, 90)
-    //  Crear NPC derecho (Leña -> Productos)
     npc_derecho = sprites.create(img`
         . . . . . . 5 . 5 . . . . . . .
         . . . . . f 5 5 5 f f . . . . .
@@ -424,136 +541,102 @@ function iniciar_mapa() {
         . . . . . f f . . f f . . . . .
     `, SpriteKind.Enemy)
     npc_derecho.setPosition(140, 90)
-    //  Cambiar estado
     estado_juego = "mapa"
-    //  Instrucciones
-    game.showLongText("Acércate a un vecino y presiona A. Presiona B para ver la tabla", DialogLayout.Bottom)
+    game.showLongText("Acercate a un vecino y presiona A. Presiona B para ver la tabla", DialogLayout.Top)
 }
 
 function menu_productos_a_lena() {
-    /** Menú para convertir productos a leña. */
     
     estado_juego = "menu_conversion"
-    scene.setBackgroundColor(7)
-    //  Lista de productos
-    let opciones = ["🐓 Gallina (6kg)", "🥔 Patatas (2kg)", "🐐 Cabra (5kg)", "🥚 Huevos (3kg)", "🐎 Caballo (12kg)"]
-    //  Mostrar opciones
-    let mensaje = "PRODUCTOS → LEÑA\n\n"
-    for (let i = 0; i < opciones.length; i++) {
-        mensaje += "" + (i + 1) + ". " + opciones[i] + "\n"
-    }
-    mensaje += "\n0. Volver al mapa"
-    game.showLongText(mensaje, DialogLayout.Center)
-    //  Pedir selección
-    producto_seleccionado = game.askForNumber("Elige (0-5)", 1)
-    //  Si elige 0, volver al mapa
-    if (producto_seleccionado == 0) {
+    desactivar_movimiento()
+    let items = [miniMenu.createMenuItem("Gallina (6kg)", obtener_imagen_producto(0)), miniMenu.createMenuItem("Patatas (2kg)", obtener_imagen_producto(1)), miniMenu.createMenuItem("Cabra (5kg)", obtener_imagen_producto(2)), miniMenu.createMenuItem("Huevos (3kg)", obtener_imagen_producto(3)), miniMenu.createMenuItem("Caballo (12kg)", obtener_imagen_producto(4))]
+    let menu_visual = miniMenu.createMenuFromArray(items)
+    menu_visual.setTitle("PRODUCTOS A LEÑA")
+    menu_visual.onButtonPressed(controller.A, function al_seleccionar(valor: string, indice: number) {
+        
+        producto_seleccionado = indice
+        menu_visual.close()
+        cantidad_producto = game.askForNumber("", 2)
+        if (cantidad_producto == 0) {
+            activar_movimiento()
+            estado_juego = "mapa"
+            return
+        }
+        
+        if (!validar_cantidad(producto_seleccionado, cantidad_producto, true)) {
+            activar_movimiento()
+            estado_juego = "mapa"
+            return
+        }
+        
+        resultado_conversion = calcular_productos_a_lena(producto_seleccionado, cantidad_producto)
+        resultado_conversion = redondear_resultado(resultado_conversion)
+        mostrar_resultado("productos_a_lena")
+    })
+    menu_visual.onButtonPressed(controller.B, function al_cancelar(valor: string, indice: number) {
+        
+        menu_visual.close()
+        activar_movimiento()
+        game.splash("Cancelado", "Volviendo al mapa")
         estado_juego = "mapa"
-        return
-    }
-    
-    //  Ajustar índice (restar 1 porque el usuario ingresa 1-5)
-    producto_seleccionado = producto_seleccionado - 1
-    if (producto_seleccionado < 0 || producto_seleccionado > 4) {
-        game.splash("ERROR", "Opción inválida")
-        estado_juego = "mapa"
-        return
-    }
-    
-    //  Pedir cantidad
-    cantidad_producto = game.askForNumber("¿Cuántos? (0=cancelar)", 2)
-    //  Si cancela
-    if (cantidad_producto == 0) {
-        estado_juego = "mapa"
-        return
-    }
-    
-    if (!validar_cantidad(producto_seleccionado, cantidad_producto, true)) {
-        estado_juego = "mapa"
-        return
-    }
-    
-    //  Calcular
-    resultado_conversion = calcular_productos_a_lena(producto_seleccionado, cantidad_producto)
-    resultado_conversion = redondear_resultado(resultado_conversion)
-    //  Mostrar resultado
-    mostrar_resultado("productos_a_lena")
+    })
 }
 
 function menu_lena_a_productos() {
-    /** Menú para convertir leña a productos. */
     
     estado_juego = "menu_conversion"
-    scene.setBackgroundColor(7)
-    //  Pedir cantidad de leña
-    cantidad_producto = game.askForNumber("¿Cuántos kg leña? (0=cancelar)", 2)
-    //  Si cancela
-    if (cantidad_producto == 0) {
+    desactivar_movimiento()
+    cantidad_producto = game.askForNumber("", 2)
+    if (cantidad_producto <= 0) {
+        activar_movimiento()
         estado_juego = "mapa"
         return
     }
     
-    if (cantidad_producto < 0) {
-        game.splash("ERROR", "Cantidad inválida")
+    let items = [miniMenu.createMenuItem("Gallina", obtener_imagen_producto(0)), miniMenu.createMenuItem("Patatas", obtener_imagen_producto(1)), miniMenu.createMenuItem("Cabra", obtener_imagen_producto(2)), miniMenu.createMenuItem("Huevos", obtener_imagen_producto(3)), miniMenu.createMenuItem("Caballo", obtener_imagen_producto(4))]
+    let menu_visual = miniMenu.createMenuFromArray(items)
+    menu_visual.setTitle("LEÑA A PRODUCTOS")
+    menu_visual.onButtonPressed(controller.A, function al_seleccionar(valor: string, indice: number) {
+        
+        producto_seleccionado = indice
+        menu_visual.close()
+        resultado_conversion = calcular_lena_a_productos(producto_seleccionado, cantidad_producto)
+        resultado_conversion = redondear_resultado(resultado_conversion)
+        mostrar_resultado("lena_a_productos")
+    })
+    menu_visual.onButtonPressed(controller.B, function al_cancelar(valor: string, indice: number) {
+        
+        menu_visual.close()
+        activar_movimiento()
+        game.splash("Cancelado", "Volviendo al mapa")
         estado_juego = "mapa"
-        return
-    }
-    
-    //  Lista de productos
-    let opciones = ["🐓 Gallina", "🥔 Patatas", "🐐 Cabra", "🥚 Huevos", "🐎 Caballo"]
-    let mensaje = "LEÑA → PRODUCTOS\n\n"
-    for (let i = 0; i < opciones.length; i++) {
-        mensaje += "" + (i + 1) + ". " + opciones[i] + "\n"
-    }
-    mensaje += "\n0. Volver al mapa"
-    game.showLongText(mensaje, DialogLayout.Center)
-    //  Pedir selección
-    producto_seleccionado = game.askForNumber("Elige (0-5)", 1)
-    //  Si elige 0, volver al mapa
-    if (producto_seleccionado == 0) {
-        estado_juego = "mapa"
-        return
-    }
-    
-    //  Ajustar índice
-    producto_seleccionado = producto_seleccionado - 1
-    if (producto_seleccionado < 0 || producto_seleccionado > 4) {
-        game.splash("ERROR", "Opción inválida")
-        estado_juego = "mapa"
-        return
-    }
-    
-    //  Calcular
-    resultado_conversion = calcular_lena_a_productos(producto_seleccionado, cantidad_producto)
-    resultado_conversion = redondear_resultado(resultado_conversion)
-    //  Mostrar resultado
-    mostrar_resultado("lena_a_productos")
+    })
 }
 
 function mostrar_resultado(tipo_conversion: string) {
-    let mensaje: any;
-    /** Muestra el resultado de la conversión. */
+    let linea1: any;
+    let linea2: any;
     
-    let emoji = obtener_emoji_producto(producto_seleccionado)
     let nombre = obtener_nombre_producto(producto_seleccionado)
+    game.splash("INTERCAMBIO REALIZADO", "")
     if (tipo_conversion == "productos_a_lena") {
-        mensaje = emoji + " " + ("" + cantidad_producto) + " " + nombre + "\n\n= 🌲 " + ("" + resultado_conversion) + " kg leña"
+        linea1 = "ENTREGASTE: " + ("" + cantidad_producto) + " " + nombre
+        linea2 = "RECIBISTE: " + ("" + resultado_conversion) + " kg de Leña"
     } else {
-        mensaje = "🌲 " + ("" + cantidad_producto) + " kg leña\n\n= " + emoji + " " + ("" + resultado_conversion) + " " + nombre
+        linea1 = "ENTREGASTE: " + ("" + cantidad_producto) + " kg de Leña"
+        linea2 = "RECIBISTE: " + ("" + resultado_conversion) + " " + nombre
     }
     
-    game.splash("CONVERSIÓN", mensaje)
-    //  Efectos
+    game.splash(linea1, linea2)
     effects.confetti.startScreenEffect()
-    pause(1000)
+    music.playMelody("C5 E G C5 E G ", 200)
+    pause(2000)
     effects.confetti.endScreenEffect()
-    //  Mensaje de continuación
-    game.showLongText("Presiona A para volver al mapa", DialogLayout.Bottom)
+    activar_movimiento()
     estado_juego = "mapa"
 }
 
 controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
-    /** Maneja el botón A. */
     
     if (estado_juego == "bienvenida") {
         iniciar_mapa()
@@ -568,27 +651,13 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
     
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function on_b_pressed() {
-    let tabla: string;
-    /** Muestra tabla de referencia o cancela menú. */
     
     if (estado_juego == "mapa") {
-        tabla = `TABLA DE CONVERSIÓN
-        
-🐓 Gallina = 6 kg leña
-🥔 Patatas (1.5kg) = 2 kg leña
-🐐 Cabra = 5 kg leña
-🥚 Huevos (12) = 3 kg leña
-🐎 Caballo = 12 kg leña`
-        game.showLongText(tabla, DialogLayout.Center)
-    } else if (estado_juego == "menu_conversion") {
-        //  Cancelar y volver al mapa
-        game.splash("Cancelado", "Volviendo al mapa...")
-        estado_juego = "mapa"
+        game.showLongText("TABLA DE CONVERSION       Gallina = 6 kg leña       Patatas (1.5kg) = 2 kg leña       Cabra = 5 kg leña       Huevos (12) = 3 kg leña       Caballo = 12 kg leña", DialogLayout.Center)
     }
     
 })
 game.onUpdateInterval(500, function verificar_proximidad() {
-    /** Verifica si el jugador está cerca de algún NPC. */
     
     if (estado_juego != "mapa") {
         return
@@ -600,10 +669,10 @@ game.onUpdateInterval(500, function verificar_proximidad() {
     let dist_der_y = Math.abs(mi_personaje.y - npc_derecho.y)
     if (dist_izq_x < 25 && dist_izq_y < 25) {
         cerca_de_npc = "izquierdo"
-        npc_izquierdo.say("Presiona A", 500)
+        npc_izquierdo.say("Productos a Leña", 500)
     } else if (dist_der_x < 25 && dist_der_y < 25) {
         cerca_de_npc = "derecho"
-        npc_derecho.say("Presiona A", 500)
+        npc_derecho.say("Leña a Productos", 500)
     } else {
         cerca_de_npc = ""
     }

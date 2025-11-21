@@ -1,7 +1,3 @@
-
-# ==================
-# VARIABLES GLOBALES
-# ==================
 mi_personaje: Sprite = None
 npc_izquierdo: Sprite = None
 npc_derecho: Sprite = None
@@ -38,46 +34,175 @@ def obtener_emoji_producto(indice: int) -> str:
         return "🐎"
     return ""
 
+def obtener_imagen_producto(indice: int) -> Image:
+    if indice == 0:
+        return img("""
+            . . . . . . . . . b 5 b . . . .
+            . . . . . . . . . b 5 b . . . .
+            . . . . . . b b b b b b . . . .
+            . . . . . b b 5 5 5 5 5 b . . .
+            . . . . b b 5 b c 5 5 d 4 c . .
+            . b b b b 5 5 5 b f d d 4 4 4 b
+            . b d 5 b 5 5 b c b 4 4 4 4 b .
+            . . b 5 5 b 5 5 5 4 4 4 4 b . .
+            . . b d 5 5 b 5 5 5 5 5 5 b . .
+            . b d b 5 5 5 d 5 5 5 5 5 5 b .
+            b d d c d 5 5 b 5 5 5 5 5 5 b .
+            c d d d c c b 5 5 5 5 5 5 5 b .
+            c b d d d d d 5 5 5 5 5 5 5 b .
+            . c d d d d d d 5 5 5 5 5 d b .
+            . . c b d d d d d 5 5 5 b b . .
+            . . . c c c c c c c c b b . . .
+        """)
+    elif indice == 1:
+        return img("""
+            . . . . . . . . . . . . . . . .
+            . . . . . . . e c 7 . . . . . .
+            . . . . e e e c 7 7 e e . . . .
+            . . c e e e e c 7 e 2 2 e e . .
+            . c e e e e e c 6 e e 2 2 2 e .
+            . c e e e 2 e c c 2 4 5 4 2 e .
+            c e e e 2 2 2 2 2 2 4 5 5 2 2 e
+            c e e e 2 2 2 2 2 2 2 4 4 2 2 e
+            c e e e 2 2 2 2 2 2 2 2 2 2 2 e
+            c e e e 2 d 2 2 2 2 2 2 2 2 2 e
+            c e e e e 2 2 2 2 2 2 2 2 2 2 e
+            c e 2 e e 2 2 2 2 2 2 2 2 2 2 e
+            . e e e e 2 2 2 2 2 2 2 2 2 e .
+            . e e e 2 e 2 2 2 2 2 2 2 e e .
+            . . e e e e e e e e e e e e . .
+            . . . e e e e e e e e e e . . .
+        """)
+    elif indice == 2:
+        return img("""
+            . . . . . . . . . . . . . . . .
+            . . . . . f f f f f f . . . . .
+            . . . . f e e e e e e f . . . .
+            . . . f e e e e e e e e f . . .
+            . . . f e e e f f e e e f . . .
+            . . . f e e f e e f e e f . . .
+            . . . f e e e e e e e e f . . .
+            . . . . f e e e e e e f . . . .
+            . . . . . f f f f f f . . . . .
+            . . . . f f . . . . f f . . . .
+            . . . . f . . . . . . f . . . .
+            . . . . f . . . . . . f . . . .
+            . . . f f . . . . . . f f . . .
+            . . . f . . . . . . . . f . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+        """)
+    elif indice == 3:
+        return img("""
+            . . . . . . . . . . . . . . . .
+            . . . . . . . b b b b . . . . .
+            . . . . . . b b 1 1 b b . . . .
+            . . . . . b b 1 1 1 1 b b . . .
+            . . . . . b 1 1 1 1 1 1 b . . .
+            . . . . b b 1 1 1 1 1 1 b b . .
+            . . . . b 1 1 1 1 1 1 1 1 b . .
+            . . . . b 1 1 1 1 1 1 1 1 b . .
+            . . . . b 1 1 1 1 1 1 1 1 b . .
+            . . . . b 1 1 1 1 1 1 1 1 b . .
+            . . . . b b 1 1 1 1 1 1 b b . .
+            . . . . . b 1 1 1 1 1 1 b . . .
+            . . . . . b b 1 1 1 1 b b . . .
+            . . . . . . b b 1 1 b b . . . .
+            . . . . . . . b b b b . . . . .
+            . . . . . . . . . . . . . . . .
+        """)
+    elif indice == 4:
+        return img("""
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . c c . . . . . .
+            . . . . . . c c c c c . . . . .
+            . . . . . c c e e c c c . . . .
+            . . . . c c e e e e c c c . . .
+            . . . . c e e e e e e e c . . .
+            . . . . c e e e e e e e c . . .
+            . . . c c c c c c c e e c c . .
+            . . . c e e e e e c c e e c . .
+            . . c c e e e e e e c c c c c .
+            . . c e e e e e e e e e e e c .
+            . . c e e e e e e e e e e e c .
+            . c c c c c c c c c c c c c c c
+            . c e e c . . . . . . c e e c .
+            . c c c c . . . . . . c c c c .
+            . . . . . . . . . . . . . . . .
+        """)
+    return img("""
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    """)
+
+def obtener_imagen_lena() -> Image:
+    return img("""
+        . . . . . . . . . . . . . . . .
+        . . . . . e e e e e . . . . . .
+        . . . . e e e e e e e . . . . .
+        . . . e e e e e e e e e . . . .
+        . . . e e e e e e e e e . . . .
+        . . . e e e f f e e e e . . . .
+        . . . e e e f f e e e e . . . .
+        . . . e e e e e e e e e . . . .
+        . . . e e e e e e e e e . . . .
+        . . . . e e e e e e e . . . . .
+        . . . . . e e e e e . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+        . . . . . . . . . . . . . . . .
+    """)
+
 def calcular_productos_a_lena(producto: int, cantidad: number) -> number:
-    """Calcula cuántos kg de leña se necesitan para X productos."""
-    if producto == 0: 
+    if producto == 0:
         return cantidad * 6
-    elif producto == 1:  
+    elif producto == 1:
         return (cantidad * 2) / 1.5
-    elif producto == 2:  
+    elif producto == 2:
         return cantidad * 5
-    elif producto == 3: 
+    elif producto == 3:
         return (cantidad * 3) / 12
-    elif producto == 4:  
+    elif producto == 4:
         return cantidad * 12
     return 0
 
 def calcular_lena_a_productos(producto: int, kg_lena: number) -> number:
-    """Calcula cuántos productos se obtienen con X kg de leña."""
-    if producto == 0:  # Gallina
+    if producto == 0:
         return kg_lena / 6
-    elif producto == 1:  # Patata
+    elif producto == 1:
         return (kg_lena * 1.5) / 2
-    elif producto == 2:  # Cabra
+    elif producto == 2:
         return kg_lena / 5
-    elif producto == 3:  # Huevos
+    elif producto == 3:
         return (kg_lena * 12) / 3
-    elif producto == 4:  # Caballo
+    elif producto == 4:
         return kg_lena / 12
     return 0
 
 def redondear_resultado(valor: number) -> number:
-    """Redondea un valor a 2 decimales."""
     return Math.round(valor * 100) / 100
 
 def validar_cantidad(producto: int, cantidad: number, es_producto: bool) -> bool:
-    """Valida que la cantidad sea correcta."""
-    # No negativos ni cero
     if cantidad <= 0:
         game.splash("ERROR", "La cantidad debe ser mayor que 0")
         return False
     
-    # Para animales (Gallina, Cabra, Caballo) solo enteros
     if es_producto and (producto == 0 or producto == 2 or producto == 4):
         if cantidad != Math.floor(cantidad):
             game.splash("ERROR", "Solo números enteros de animales")
@@ -85,10 +210,13 @@ def validar_cantidad(producto: int, cantidad: number, es_producto: bool) -> bool
     
     return True
 
+def desactivar_movimiento():
+    controller.move_sprite(mi_personaje, 0, 0)
+
+def activar_movimiento():
+    controller.move_sprite(mi_personaje, 100, 100)
 
 def mostrar_bienvenida():
-    """Muestra la pantalla de bienvenida del juego."""
-    # Tu fondo original de bienvenida
     scene.set_background_image(img("""
         1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
         1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -202,27 +330,15 @@ def mostrar_bienvenida():
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-        6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-        6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-        6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
-        6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
         """))
     
     game.splash("Bienvenido al", "Conversor Rural")
     
-    historia = """En Alcubilla de Avellaneda
-intercambiamos productos
-por leña de pino.
-
-Tu abuelo ganó 1 hectárea
-en el sorteo!"""
+    game.splash("CONVERSOR DE UNIDADES", "Cambia leña por productos o viceversa")
     
-    game.show_long_text(historia, DialogLayout.CENTER)
-    game.show_long_text("Presiona A para continuar", DialogLayout.BOTTOM)
-
+    iniciar_mapa()
 
 def iniciar_mapa():
-    """Inicializa el mapa con los personajes y NPCs."""
     global mi_personaje, npc_izquierdo, npc_derecho, estado_juego
     
     scene.set_background_image(img("""
@@ -347,7 +463,6 @@ def iniciar_mapa():
         7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     """))
     
-    # Crear personaje principal
     mi_personaje = sprites.create(img("""
         . . . . . . . . . . . . . . . .
         . . . . . . f f f f . . . . . .
@@ -371,7 +486,6 @@ def iniciar_mapa():
     controller.move_sprite(mi_personaje, 100, 100)
     mi_personaje.set_stay_in_screen(True)
     
-    # Crear NPC izquierdo (Productos -> Leña)
     npc_izquierdo = sprites.create(img("""
         . . . . . f f 4 4 f f . . . . .
         . . . . f 5 4 5 5 4 5 f . . . .
@@ -393,7 +507,6 @@ def iniciar_mapa():
     
     npc_izquierdo.set_position(20, 90)
     
-    # Crear NPC derecho (Leña -> Productos)
     npc_derecho = sprites.create(img("""
         . . . . . . 5 . 5 . . . . . . .
         . . . . . f 5 5 5 f f . . . . .
@@ -415,15 +528,11 @@ def iniciar_mapa():
     
     npc_derecho.set_position(140, 90)
     
-    # Cambiar estado
     estado_juego = "mapa"
     
-    # Instrucciones
-    game.show_long_text("Acércate a un vecino y presiona A. Presiona B para ver la tabla", DialogLayout.BOTTOM)
-
+    game.show_long_text("Acercate a un vecino y presiona A. Presiona B para ver la tabla", DialogLayout.TOP)
 
 def verificar_proximidad():
-    """Verifica si el jugador está cerca de algún NPC."""
     global cerca_de_npc
     
     if estado_juego != "mapa":
@@ -437,145 +546,135 @@ def verificar_proximidad():
     
     if dist_izq_x < 25 and dist_izq_y < 25:
         cerca_de_npc = "izquierdo"
-        npc_izquierdo.say("Presiona A", 500)
+        npc_izquierdo.say("Productos a Leña", 500)
     elif dist_der_x < 25 and dist_der_y < 25:
         cerca_de_npc = "derecho"
-        npc_derecho.say("Presiona A", 500)
+        npc_derecho.say("Leña a Productos", 500)
     else:
         cerca_de_npc = ""
 
 def menu_productos_a_lena():
-    """Menú para convertir productos a leña."""
-    global estado_juego, producto_seleccionado, cantidad_producto, resultado_conversion
+    global estado_juego, producto_seleccionado
     
     estado_juego = "menu_conversion"
-    scene.set_background_color(7)
+    desactivar_movimiento()
     
-    # Lista de productos
-    opciones = ["🐓 Gallina (6kg)", "🥔 Patatas (2kg)", "🐐 Cabra (5kg)", "🥚 Huevos (3kg)", "🐎 Caballo (12kg)"]
+    items = [
+        miniMenu.create_menu_item("Gallina (6kg)", obtener_imagen_producto(0)),
+        miniMenu.create_menu_item("Patatas (2kg)", obtener_imagen_producto(1)),
+        miniMenu.create_menu_item("Cabra (5kg)", obtener_imagen_producto(2)),
+        miniMenu.create_menu_item("Huevos (3kg)", obtener_imagen_producto(3)),
+        miniMenu.create_menu_item("Caballo (12kg)", obtener_imagen_producto(4))
+    ]
     
-    # Mostrar opciones
-    mensaje = "PRODUCTOS → LEÑA\n\n"
-    for i in range(len(opciones)):
-        mensaje += str(i + 1) + ". " + opciones[i] + "\n"
-    mensaje += "\n0. Volver al mapa"
+    menu_visual = miniMenu.create_menu_from_array(items)
+    menu_visual.set_title("PRODUCTOS A LEÑA")
     
-    game.show_long_text(mensaje, DialogLayout.CENTER)
+    def al_seleccionar(valor: str, indice: number):
+        global producto_seleccionado, cantidad_producto, resultado_conversion, estado_juego
+        
+        producto_seleccionado = indice
+        menu_visual.close()
+        
+        cantidad_producto = game.ask_for_number("", 2)
+        
+        if cantidad_producto == 0:
+            activar_movimiento()
+            estado_juego = "mapa"
+            return
+        
+        if not validar_cantidad(producto_seleccionado, cantidad_producto, True):
+            activar_movimiento()
+            estado_juego = "mapa"
+            return
+        
+        resultado_conversion = calcular_productos_a_lena(producto_seleccionado, cantidad_producto)
+        resultado_conversion = redondear_resultado(resultado_conversion)
+        
+        mostrar_resultado("productos_a_lena")
     
-    # Pedir selección
-    producto_seleccionado = game.ask_for_number("Elige (0-5)", 1)
+    menu_visual.on_button_pressed(controller.A, al_seleccionar)
     
-    # Si elige 0, volver al mapa
-    if producto_seleccionado == 0:
+    def al_cancelar(valor: str, indice: number):
+        global estado_juego
+        menu_visual.close()
+        activar_movimiento()
+        game.splash("Cancelado", "Volviendo al mapa")
         estado_juego = "mapa"
-        return
     
-    # Ajustar índice (restar 1 porque el usuario ingresa 1-5)
-    producto_seleccionado = producto_seleccionado - 1
-    
-    if producto_seleccionado < 0 or producto_seleccionado > 4:
-        game.splash("ERROR", "Opción inválida")
-        estado_juego = "mapa"
-        return
-    
-    # Pedir cantidad
-    cantidad_producto = game.ask_for_number("¿Cuántos? (0=cancelar)", 2)
-    
-    # Si cancela
-    if cantidad_producto == 0:
-        estado_juego = "mapa"
-        return
-    
-    if not validar_cantidad(producto_seleccionado, cantidad_producto, True):
-        estado_juego = "mapa"
-        return
-    
-    # Calcular
-    resultado_conversion = calcular_productos_a_lena(producto_seleccionado, cantidad_producto)
-    resultado_conversion = redondear_resultado(resultado_conversion)
-    
-    # Mostrar resultado
-    mostrar_resultado("productos_a_lena")
+    menu_visual.on_button_pressed(controller.B, al_cancelar)
 
 def menu_lena_a_productos():
-    """Menú para convertir leña a productos."""
-    global estado_juego, producto_seleccionado, cantidad_producto, resultado_conversion
+    global estado_juego, cantidad_producto
     
     estado_juego = "menu_conversion"
-    scene.set_background_color(7)
+    desactivar_movimiento()
     
-    # Pedir cantidad de leña
-    cantidad_producto = game.ask_for_number("¿Cuántos kg leña? (0=cancelar)", 2)
+    cantidad_producto = game.ask_for_number("", 2)
     
-    # Si cancela
-    if cantidad_producto == 0:
+    if cantidad_producto <= 0:
+        activar_movimiento()
         estado_juego = "mapa"
         return
     
-    if cantidad_producto < 0:
-        game.splash("ERROR", "Cantidad inválida")
+    items = [
+        miniMenu.create_menu_item("Gallina", obtener_imagen_producto(0)),
+        miniMenu.create_menu_item("Patatas", obtener_imagen_producto(1)),
+        miniMenu.create_menu_item("Cabra", obtener_imagen_producto(2)),
+        miniMenu.create_menu_item("Huevos", obtener_imagen_producto(3)),
+        miniMenu.create_menu_item("Caballo", obtener_imagen_producto(4))
+    ]
+    
+    menu_visual = miniMenu.create_menu_from_array(items)
+    menu_visual.set_title("LEÑA A PRODUCTOS")
+    
+    def al_seleccionar(valor: str, indice: number):
+        global producto_seleccionado, resultado_conversion, estado_juego
+        
+        producto_seleccionado = indice
+        menu_visual.close()
+        
+        resultado_conversion = calcular_lena_a_productos(producto_seleccionado, cantidad_producto)
+        resultado_conversion = redondear_resultado(resultado_conversion)
+        
+        mostrar_resultado("lena_a_productos")
+    
+    menu_visual.on_button_pressed(controller.A, al_seleccionar)
+    
+    def al_cancelar(valor: str, indice: number):
+        global estado_juego
+        menu_visual.close()
+        activar_movimiento()
+        game.splash("Cancelado", "Volviendo al mapa")
         estado_juego = "mapa"
-        return
     
-    # Lista de productos
-    opciones = ["🐓 Gallina", "🥔 Patatas", "🐐 Cabra", "🥚 Huevos", "🐎 Caballo"]
-    
-    mensaje = "LEÑA → PRODUCTOS\n\n"
-    for i in range(len(opciones)):
-        mensaje += str(i + 1) + ". " + opciones[i] + "\n"
-    mensaje += "\n0. Volver al mapa"
-    
-    game.show_long_text(mensaje, DialogLayout.CENTER)
-    
-    # Pedir selección
-    producto_seleccionado = game.ask_for_number("Elige (0-5)", 1)
-    
-    # Si elige 0, volver al mapa
-    if producto_seleccionado == 0:
-        estado_juego = "mapa"
-        return
-    
-    # Ajustar índice
-    producto_seleccionado = producto_seleccionado - 1
-    
-    if producto_seleccionado < 0 or producto_seleccionado > 4:
-        game.splash("ERROR", "Opción inválida")
-        estado_juego = "mapa"
-        return
-    
-    # Calcular
-    resultado_conversion = calcular_lena_a_productos(producto_seleccionado, cantidad_producto)
-    resultado_conversion = redondear_resultado(resultado_conversion)
-    
-    # Mostrar resultado
-    mostrar_resultado("lena_a_productos")
+    menu_visual.on_button_pressed(controller.B, al_cancelar)
 
 def mostrar_resultado(tipo_conversion: str):
-    """Muestra el resultado de la conversión."""
     global estado_juego
     
-    emoji = obtener_emoji_producto(producto_seleccionado)
     nombre = obtener_nombre_producto(producto_seleccionado)
     
+    game.splash("INTERCAMBIO REALIZADO", "")
+    
     if tipo_conversion == "productos_a_lena":
-        mensaje = emoji + " " + str(cantidad_producto) + " " + nombre + "\n\n= 🌲 " + str(resultado_conversion) + " kg leña"
+        linea1 = "ENTREGASTE: " + str(cantidad_producto) + " " + nombre
+        linea2 = "RECIBISTE: " + str(resultado_conversion) + " kg de Leña"
     else:
-        mensaje = "🌲 " + str(cantidad_producto) + " kg leña\n\n= " + emoji + " " + str(resultado_conversion) + " " + nombre
+        linea1 = "ENTREGASTE: " + str(cantidad_producto) + " kg de Leña"
+        linea2 = "RECIBISTE: " + str(resultado_conversion) + " " + nombre
     
-    game.splash("CONVERSIÓN", mensaje)
+    game.splash(linea1, linea2)
     
-    # Efectos
     effects.confetti.start_screen_effect()
-    pause(1000)
+    music.play_melody("C5 E G C5 E G ", 200)
+    pause(2000)
     effects.confetti.end_screen_effect()
     
-    # Mensaje de continuación
-    game.show_long_text("Presiona A para volver al mapa", DialogLayout.BOTTOM)
-    
+    activar_movimiento()
     estado_juego = "mapa"
 
 def on_a_pressed():
-    """Maneja el botón A."""
     global estado_juego
     
     if estado_juego == "bienvenida":
@@ -587,24 +686,10 @@ def on_a_pressed():
             menu_lena_a_productos()
 
 def on_b_pressed():
-    """Muestra tabla de referencia o cancela menú."""
     global estado_juego
     
     if estado_juego == "mapa":
-        tabla = """TABLA DE CONVERSIÓN
-        
-🐓 Gallina = 6 kg leña
-🥔 Patatas (1.5kg) = 2 kg leña
-🐐 Cabra = 5 kg leña
-🥚 Huevos (12) = 3 kg leña
-🐎 Caballo = 12 kg leña"""
-        
-        game.show_long_text(tabla, DialogLayout.CENTER)
-    
-    elif estado_juego == "menu_conversion":
-        # Cancelar y volver al mapa
-        game.splash("Cancelado", "Volviendo al mapa...")
-        estado_juego = "mapa"
+        game.show_long_text("TABLA DE CONVERSION       Gallina = 6 kg leña       Patatas (1.5kg) = 2 kg leña       Cabra = 5 kg leña       Huevos (12) = 3 kg leña       Caballo = 12 kg leña", DialogLayout.CENTER)
 
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
 controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
