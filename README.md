@@ -1,33 +1,54 @@
- 
+# Conversor Rural - micro:bit
+
+Proyecto de conversión rural desarrollado con MakeCode Arcade para micro:bit.
+
+## Descripción
+
+Este proyecto es parte de la actividad AC12 del curso DAM2 (Desarrollo de Aplicaciones Multiplataforma) de ITEC-BCN. Se trata de un conversor rural implementado para dispositivos micro:bit utilizando TypeScript y Python.
+
+## Características
+
+- Implementación en TypeScript y Python
+- Compatible con micro:bit
+- Interfaz visual con bloques de MakeCode
+- Sprites e imágenes personalizadas
+- Tilemaps integrados
+
+## Tecnologías
+
+- **Lenguaje principal**: TypeScript
+- **Lenguaje alternativo**: Python
+- **Plataforma**: MakeCode Arcade
+- **Hardware**: micro:bit
 
 
-> Open this page at [https://raimonizard.github.io/demo/](https://raimonizard.github.io/demo/)
+## Cómo usar
 
-## Use as Extension
+### Opción 1: Editar en MakeCode
 
-This repository can be added as an **extension** in MakeCode.
+1. Abre [https://arcade.makecode.com/](https://arcade.makecode.com/)
+2. Haz clic en **Import** y luego en **Import URL**
+3. Pega la URL: `https://github.com/ITEC-BCN/ac12-conversor-rural-williamG7`
+4. Haz clic en **Import**
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/raimonizard/demo** and import
+### Opción 2: Usar como Extensión
 
-## Edit this project ![Build status badge](https://github.com/raimonizard/demo/workflows/MakeCode/badge.svg)
+1. Abre [https://arcade.makecode.com/](https://arcade.makecode.com/)
+2. Crea un **New Project**
+3. Haz clic en **Extensions** en el menú de configuración
+4. Busca: `https://github.com/ITEC-BCN/ac12-conversor-rural-williamG7`
+5. Importa la extensión
 
-To edit this repository in MakeCode.
+## 📸 Vista Previa de Bloques
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/raimonizard/demo** and click import
+La siguiente imagen muestra el código en bloques del último commit:
 
-## Blocks preview
+![Vista de los bloques](https://github.com/ITEC-BCN/ac12-conversor-rural-williamG7/raw/main/.github/makecode/blocks.png)
 
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
+## Autor
 
-![A rendered view of the blocks](https://github.com/raimonizard/demo/raw/master/.github/makecode/blocks.png)
+- **williamG7** - [GitHub Profile](https://github.com/williamG7)
 
-#### Metadata (used for search, rendering)
+## Licencia
 
-* for PXT/arcade
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+Este proyecto es parte de un ejercicio académico de ITEC-BCN.
